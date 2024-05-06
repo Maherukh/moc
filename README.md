@@ -40,6 +40,8 @@ Drag and Drop Feature: I attempted to incorporate the drag and drop functionalit
 
 - <b>UI/UX Enhancements:</b> Enhance the color combinations for a better user experience.
 
+- <b>ENV file:</b>env file can be used to store important infor like key for the API.
+
 - <b>Quantity Counter:</b> Introduce a quantity counter in the product list to allow users to increase or decrease the quantity of selected products.
   
 - <b>Performance Optimization:</b> Implement Skeleton CSS for smoother transitions and lazy loading for improved performance, especially with large product lists.
