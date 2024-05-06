@@ -1,0 +1,182 @@
+ /* global css */
+
+ * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+ }
+
+ button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+ /* App.js */
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.App-header{
+  display: flex; 
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.App-header img {
+  margin: 1rem;
+}
+
+/* Main.jsx */
+.Main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Main button {
+  background-color: green;
+  color: white;
+}
+
+/* ProductPicker.jsx */
+.ProductPicker {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  overflow: auto;
+  background: white;
+  border-left: 1px solid #ccc;
+  padding: 1.5rem;
+}
+
+.ProductPicker button {
+  background-color: dodgerblue;
+  color: white;
+}
+
+input {
+  padding: 9px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #ccc;
+}
+
+.ProductPicker .Product {
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.Product-Image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Product-header{
+  margin: 0.5rem 0;
+}
+
+.variant-checkbox {
+  margin-right: 0.25rem;
+}
+
+.Product-Variants {
+  margin: 0.25rem 0;
+}
+
+.Product-variants {
+  margin: 0.25rem 0 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.Product-Price {
+  padding: 0.2rem 0 0 0;
+  font-weight: 600;
+}
+
+.ProductList {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.Product {
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.Product h2 {
+  margin: 0 0 1em;
+}
+
+.Product button {
+  margin-top: 1em;
+}
+
+/* ProductList.jsx */
+
+.Product-List {
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+}
+
+.Product-Item {
+  padding: 1em;
+  margin: 1em 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.Delete-Btn{
+  background: red !important;
+  color: white;
+}
+
+.Normal-Btn{
+  background: dodgerblue !important;
+  color: white;
+}
+
+.Product-Flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.variants-list {
+  list-style: none;
+  margin-bottom: 0.5rem;
+}
+
+.Line {
+  border-top: 1px solid #ccc;
+  margin: 1rem 0;
+}
+
+.Variant-List-Item {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
