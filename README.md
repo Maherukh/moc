@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+<h2>🛠️ Installation Steps:</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>1. $ git clone {the url to the GitHub repo}</p>
 
-## Available Scripts
+```
+This clones the repo cd into the new folder and type $ npm install to install all dependencies
+```
 
-In the project directory, you can run:
+<p>2. $ npm install</p>
 
-### `npm start`
+```
+$ npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p>3. $ npm start</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+$ npm start
+```
 
-### `npm test`
+<h2>Interview Assessment</h2>
+During the interview assessment, I successfully completed most of the tasks assigned, creating a product list and a product picker with various features. However, two functionalities remained incomplete: the drag and drop feature in the product list and pagination in the search function of the product picker.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h3>Components Developed:</h3>
+I worked on two components for the assessment:
 
-### `npm run build`
+<b>Product List:</b> This component enables users to sort and filter products based on various options. I implemented features for organizing and customizing products.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<b>Product Picker:</b> The product picker component allows users to search for products using a search bar and select them.
+Implemented Features:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<b>Discounts:</b> Implemented discounts on the product level, recognizing the need to extend this functionality to the variant level to accommodate different discount ranges for various variants.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<b>Displaying Discounted Prices:</b> Previously, only discounted numbers were shown, but now, discounted prices are also displayed for better clarity.
 
-### `npm run eject`
+<h3>Challenges Faced:</h3>
+Drag and Drop Feature: I attempted to incorporate the drag and drop functionality using react-dnd but encountered challenges and ultimately opted for a static interface due to time constraints. However, the react-dnd package remains part of the dependencies as it was tested during development.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<h3>Suggestions for Improvement:</h3>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- <b>UI/UX Enhancements:</b> Enhance the color combinations for a better user experience.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- <b>ENV file:</b>env file can be used to store important infor like key for the API.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- <b>Quantity Counter:</b> Introduce a quantity counter in the product list to allow users to increase or decrease the quantity of selected products.
+  
+- <b>Performance Optimization:</b> Implement Skeleton CSS for smoother transitions and lazy loading for improved performance, especially with large product lists.
+  
+- <b>UI Library Integration:</b> Consider integrating a UI library to streamline styling efforts and maintain consistency throughout the application.
+  
+- <b>Responsive Design:</b> Ensure the application is fully responsive across various devices and screen sizes to provide a seamless user experience.
+  
+- <b>Error Handling:</b> Implement robust error handling mechanisms to gracefully handle errors and provide informative error messages to users when unexpected issues occur.
