@@ -15,7 +15,6 @@ function ProductList({ selectedProducts, onRemove, setSelectedProducts, onProduc
     const [isProductPickerOpen, setIsProductPickerOpen] = useState(false);
     const [showVariants, setShowVariants] = useState(null); // Change to null to indicate no product selected for showing variants
     const [totalPrices, setTotalPrices] = useState({});
-    
 
     useEffect(() => {
         // Recalculate total price for each product whenever selectedProducts or discountValues change
@@ -27,16 +26,22 @@ function ProductList({ selectedProducts, onRemove, setSelectedProducts, onProduc
         setTotalPrices(newTotalPrices);
     }, [selectedProducts, discountValues]);
 
-    const applyDiscount = (selectedOption, productId) => {
+    const applyDiscount = (selectedOption, productId, variantId) => {
         const discountType = selectedOption.value;
         setDiscountTypes(prevTypes => ({
             ...prevTypes,
-            [productId]: discountType,
+            [productId]: {
+                ...prevTypes[productId],
+                [variantId]: discountType,
+            },
         }));
         // Reset discount value when discount type is changed
         setDiscountValues(prevValues => ({
             ...prevValues,
-            [productId]: {},
+            [productId]: {
+                ...prevValues[productId],
+                [variantId]: "",
+            },
         }));
     };
 
@@ -53,28 +58,7 @@ function ProductList({ selectedProducts, onRemove, setSelectedProducts, onProduc
 
     const calculateTotalPrice = (product) => {
         const productId = product.id;
-        const discountType = discountTypes[productId];
-        const variantDiscountValues = discountValues[productId] || {};
-
-        let totalPrice = 0;
-        if (product.variants && product.variants.length > 0) {
-            product.variants.forEach(variant => {
-                let price = variant.price;
-                const discountValue = parseFloat(variantDiscountValues[variant.id]);
-                if (!isNaN(discountValue)) {
-                    if (discountType === 'flat') {
-                        price -= discountValue;
-                    } else {
-                        const discountAmount = (variant.price * discountValue) / 100;
-                        price -= discountAmount;
-                    }
-                }
-                totalPrice += Number(price);
-            });
-        } else {
-            totalPrice = product.price;
-        }
-
+        const totalPrice = product.variants.reduce((acc, variant) => acc + calculateDiscountedPrice(product, variant.id), 0);
         return totalPrice;
     };
 
@@ -106,14 +90,13 @@ function ProductList({ selectedProducts, onRemove, setSelectedProducts, onProduc
 
     const calculateDiscountedPrice = (product, variantId) => {
         const productId = product.id;
-        const discountType = discountTypes[productId];
-        const variantDiscountValues = discountValues[productId] || {};
+        const discountType = discountTypes[productId]?.[variantId];
+        const discountValue = parseFloat(discountValues[productId]?.[variantId]);
 
         let price = variantId ? product.variants.find(variant => variant.id === variantId).price : calculateProductPrice(product);
 
         // Apply discount for the specified variant
         if (discountType === 'flat' || discountType === 'percentage') {
-            const discountValue = parseFloat(variantDiscountValues[variantId]);
             if (!isNaN(discountValue)) {
                 if (discountType === 'flat') {
                     price -= discountValue;
@@ -146,7 +129,7 @@ function ProductList({ selectedProducts, onRemove, setSelectedProducts, onProduc
     const calculateProductPrice = (product, variantId) => {
         let totalPrice = 0;
         if (product.variants && product.variants.length > 0) {
-            totalPrice = product.variants.reduce((acc, variant) => Number(acc) + Number(variant.price), 0);
+            totalPrice = product.variants.reduce((acc, variant) => acc + variant.price, 0);
         } else {
             totalPrice = product.price;
         }
@@ -186,11 +169,11 @@ function ProductList({ selectedProducts, onRemove, setSelectedProducts, onProduc
                                     {product.variants.length > 1 ? <button onClick={() => handleRemoveVariant(product.id, variant.id)}>x</button> : null}
                                     <Select
                                         options={discountOptions}
-                                        onChange={(selectedOption) => applyDiscount(selectedOption, product.id)}
+                                        onChange={(selectedOption) => applyDiscount(selectedOption, product.id, variant.id)}
                                     />
                                     <input
                                         type="text"
-                                        value={(discountValues[product.id] && discountValues[product.id][variant.id]) || ""}
+                                        value={(discountValues[product.id]?.[variant.id]) || ""}
                                         onChange={(e) => handleDiscountChange(e, product.id, variant.id)}
                                     />
                                 </li>
