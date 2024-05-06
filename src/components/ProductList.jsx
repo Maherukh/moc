@@ -57,8 +57,7 @@ function ProductList({ selectedProducts, onRemove, setSelectedProducts, onProduc
     };
 
     const calculateTotalPrice = (product) => {
-        const productId = product.id;
-        const totalPrice = product.variants.reduce((acc, variant) => acc + calculateDiscountedPrice(product, variant.id), 0);
+        const totalPrice = product.variants.reduce((acc, variant) => Number(acc) + Number(calculateDiscountedPrice(product, variant.id)), 0);
         return totalPrice;
     };
 
