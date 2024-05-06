@@ -91,3 +91,5 @@ UI/UX Enhancements: Enhance the color combinations for a better user experience.
 Quantity Counter: Introduce a quantity counter in the product list to allow users to increase or decrease the quantity of selected products.
 Performance Optimization: Implement Skeleton CSS for smoother transitions and lazy loading for improved performance, especially with large product lists.
 UI Library Integration: Consider integrating a UI library to streamline styling efforts and maintain consistency throughout the application. 
+Responsive Design: Ensure the application is fully responsive across various devices and screen sizes to provide a seamless user experience.
+Error Handling: Implement robust error handling mechanisms to gracefully handle errors and provide informative error messages to users when unexpected issues occur.
