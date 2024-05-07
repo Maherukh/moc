@@ -9,8 +9,9 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <img height={70} src={logo} alt='logo' />
-        <h1>Product Picker</h1>
+        <h1>Monk Upsell & Cross-sell</h1>
       </header>
+      <hr />
       <Main selectedProducts={selectedProducts} setSelectedProducts={setSelectedProducts} />
     </div>
   );

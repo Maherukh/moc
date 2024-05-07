@@ -4,8 +4,8 @@ import ProductPicker from './ProductPicker';
 import "../App.css";
 
 const discountOptions = [
-    { value: 'flat', label: 'Flat Discount' },
-    { value: 'percentage', label: 'Percentage Discount' },
+    { value: 'flat', label: 'flat off' },
+    { value: 'percentage', label: '% off' },
 ];
 
 function ProductList({ selectedProducts, onRemove, setSelectedProducts, onProductSelect }) {
@@ -140,41 +140,68 @@ function ProductList({ selectedProducts, onRemove, setSelectedProducts, onProduc
             {selectedProducts && selectedProducts.map((product, index) => (
                 <div key={product.id} className={`Product-Item ${showVariants === product.id ? 'show-variants' : ''}`}>
                     <div className='Product-Flex'>
-                        <div>
-                            <h2>{product.name}</h2>
-                            <p>Total Price: {totalPrices[product.id]}</p> {/* Update total price here */}
-                            <p>Variants: {product.variants.map(variant => variant.title).join(', ')}</p>
+                        <div className='Product-Text'>
+                            <p >{product.name}</p>
+                            {/* <p>Total Price: {totalPrices[product.id]}</p> {/* Update total price here */}
+                            {/* <p>Variants: {product.variants.map(variant => variant.title).join(', ')}</p> */}
+                            <span className='Normal-Btn' onClick={() => handleEditProduct(product.id)}><span>&#9998;</span></span>
                         </div>
-                        <div>
-                            <button className='Delete-Btn' onClick={() => handleRemoveProduct(product.id)}>Delete</button>
-                            <button className='Normal-Btn' onClick={() => handleEditProduct(product.id)}>Edit</button>
-                        </div>
-                        {product.variants && product.variants.length > 0 && (
+                            {/* <button className='Delete-Btn' onClick={() => handleRemoveProduct(product.id)}><span>&#x58;</span></button> */}
+                            {/* <button className='Normal-Btn' onClick={() => handleEditProduct(product.id)}><span>&#9998;</span></button> */}
+                            {/* {product.variants && product.variants.length > 0 && (
                             <button className="show-variants-button" onClick={() => setShowVariants(showVariants === product.id ? null : product.id)}>
-                                {showVariants === product.id ? 'Hide Variants' : 'Show Variants'}
+                                {showVariants === product.id ? 'Hide Variants ▲' : 'Show Variants ▼'}
                             </button>
-                        )}
+                            )} */}
+                        <span className='Delete-Btn' onClick={() => handleRemoveProduct(product.id)}><span>&#x58;</span></span>
                     </div>
+                    <div className='flex'>
+                        <span>Variants: {product.variants.map(variant => variant.title).join(', ')}</span>
+                        <span>Total Price: {totalPrices[product.id]}</span>
+                    </div>
+                    {product.variants && product.variants.length > 0 && (
+                        <div className='show-variants-button'>
+                            { product.variants.length === 1 ? 
+                                <span className="show-variants-span" onClick={() => setShowVariants(showVariants === product.id ? null : product.id)}>
+                                    {showVariants === product.id ? 'Hide Discount ▲' : 'Show Discount ▼'}
+                                </span> 
+                                : 
+                                <span className="show-variants-span" onClick={() => setShowVariants(showVariants === product.id ? null : product.id)}>
+                                    {showVariants === product.id ? 'Hide Variants ▲' : 'Show Variants ▼'}
+                                </span>
+                            }  
+                            {/* <span className="show-variants-span" onClick={() => setShowVariants(showVariants === product.id ? null : product.id)}>
+                                {showVariants === product.id ? 'Hide Variants ▲' : 'Show Variants ▼'}
+                            </span>  */}
+                        </div>
+                    )}
                     {showVariants === product.id && product.variants && (
                         <ul className="variants-list">
-                            <hr className='Line' />
                             {product.variants.map(variant => (
                                 <li className='Variant-List-Item' key={variant.id}>
-                                    <div>
-                                        <p>{variant.name}</p>
+                                    <div className='Variant-Text'>
+                                        <p>{variant.title}</p>
                                         <p>Price: {calculateDiscountedPrice(product, variant.id)}</p>
-                                        <p>Variant: {variant.title}</p>
                                     </div>
-                                    {product.variants.length > 1 ? <button onClick={() => handleRemoveVariant(product.id, variant.id)}>x</button> : null}
-                                    <Select
-                                        options={discountOptions}
-                                        onChange={(selectedOption) => applyDiscount(selectedOption, product.id, variant.id)}
-                                    />
-                                    <input
+                                    {/* {product.variants.length > 1 ? <span className='Delete-var-Btn' onClick={() => handleRemoveVariant(product.id, variant.id)}>x</span> : null} */}
+                                    <input 
+                                        className='Discount-Input'
                                         type="text"
                                         value={(discountValues[product.id]?.[variant.id]) || ""}
                                         onChange={(e) => handleDiscountChange(e, product.id, variant.id)}
                                     />
+                                    <Select
+                                        className='Discount-Select'
+                                        style={{border: 'none', outline: 'none', boxShadow: 'none'}}
+                                        options={discountOptions}
+                                        onChange={(selectedOption) => applyDiscount(selectedOption, product.id, variant.id)}
+                                    />
+                                    {/* <input
+                                        type="text"
+                                        value={(discountValues[product.id]?.[variant.id]) || ""}
+                                        onChange={(e) => handleDiscountChange(e, product.id, variant.id)}
+                                    /> */}
+                                    {product.variants.length > 1 ? <span className='Delete-var-Btn' onClick={() => handleRemoveVariant(product.id, variant.id)}>x</span> : null}
                                 </li>
                             ))}
                         </ul>

@@ -5,28 +5,44 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  font-size: 14px;
+ }
+
+ h1{
+  font-size: 2rem;
+ }
+ 
+ h2 {
+  font-size: 1.5rem;
+ }
+
+ h3 {
+  font-size: 1rem;
  }
 
  button {
-  padding: 10px 20px;
+  padding: 10px 30px;
   border: none;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
-  margin: 0 0.5rem;
+}
+
+body{
+  background-color: #F6F6F8;
 }
 
  /* App.js */
 .App {
   width: 100vw;
-  height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #F6F6F8;
 }
 
-.App-header{
+.App-header {
   display: flex; 
   justify-content: flex-start;
   align-items: center;
+  color: #7E8185;
   max-width: 1200px;
 }
 
@@ -37,18 +53,32 @@
 /* Main.jsx */
 .Main {
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* background-color: #fff; */
+  /* border-radius: 4px; */
+  margin: 1rem auto;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
-.Main button {
-  background-color: green;
-  color: white;
+.flex-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-btn button {
+  margin-top: 1rem;
+  border: 2px solid #008060;
+  color: #008060;
+  background: white;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* ProductPicker.jsx */
@@ -62,29 +92,27 @@
   overflow: auto;
   background: white;
   border-left: 1px solid #ccc;
-  padding: 1.5rem;
 }
 
 .ProductPicker button {
-  background-color: dodgerblue;
   color: white;
 }
 
 input {
-  padding: 9px 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1.5px solid #ccc;
+  padding-left: 0.5rem;
+  font-size: 14px;
+  border: none;
+  outline: none;
 }
 
-.ProductPicker .Product {
+/* .ProductPicker .Product {
   padding: 1rem;
   margin: 1rem 0;
-}
+} */
 
 .Product-Image {
-  width: 100%;
-  height: 100%;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
 }
 
@@ -96,14 +124,11 @@ input {
   margin-right: 0.25rem;
 }
 
-.Product-Variants {
-  margin: 0.25rem 0;
-}
-
 .Product-variants {
-  margin: 0.25rem 0 0.5rem 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  margin-left: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem;
 }
 
@@ -118,12 +143,6 @@ input {
   gap: 1em;
 }
 
-.Product {
-  padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 .Product h2 {
   margin: 0 0 1em;
 }
@@ -133,6 +152,26 @@ input {
 }
 
 /* ProductList.jsx */
+
+.Discount-Input {
+  box-shadow: 0px 2px 4px 0px #0000001A;
+  border: 1px solid #0000001A;
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  width: 70px;
+}
+
+.show-variants-button{
+  margin: 1rem 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.show-variants-span {
+  color: #006EFF;
+  cursor: pointer;
+}
 
 .Product-List {
   padding: 1em;
@@ -149,17 +188,38 @@ input {
 }
 
 .Delete-Btn{
-  background: red !important;
-  color: white;
+  color: black;
+  cursor: pointer;
+  margin: 0 1rem;
+}
+
+.Delete-var-Btn{
+  color: black;
+  cursor: pointer;
+  margin: 0 1rem;
 }
 
 .Normal-Btn{
-  background: dodgerblue !important;
-  color: white;
+  color: #ccc;
+  font-size: 16px;
+  transform: rotate(90deg);
+  cursor: pointer;
 }
 
 .Product-Flex {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Product-Text {
+  width: 100%;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #00000012;
+  box-shadow: 0px 2px 4px 0px #0000001A;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -170,14 +230,97 @@ input {
   margin-bottom: 0.5rem;
 }
 
-.Line {
-  border-top: 1px solid #ccc;
-  margin: 1rem 0;
+.Variant-Text{
+  width: 300px;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #00000012;
+  box-shadow: 0px 2px 4px 0px #0000001A;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.css-13cymwt-control:focus {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.css-13cymwt-control {
+  outline: none;
+  font-size: 14px;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  border-radius: 30px !important;
 }
 
 .Variant-List-Item {
   margin-top: 1rem;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  gap: 0.8rem;
+  justify-content: flex-end;
   align-items: center;
+}
+
+.padding-1rem {
+  padding: 1rem;
+}
+
+.line {
+  width: 100%;
+  border-bottom: 1px solid #0000001A;
+}
+
+.search-bar {
+  box-sizing: border-box;
+  margin: 0.5rem !important;
+  padding: 0.5rem;
+  border: 1px solid #00000012;
+}
+
+.flex-start-prd {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.flex-start-prd h2 {
+  padding-top: 0.5rem;
+}
+
+.cancel-btn {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.span-section {
+  margin: 0.5rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cancel-btn {
+  color: black;
+  cursor: pointer;
+  border: 1px solid #00000066;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+}
+
+.add-btn {
+  border: 2px solid #008060;
+  border-radius: 4px;
+  color: white;
+  background: #008060;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }

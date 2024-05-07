@@ -36,6 +36,7 @@ function Main({ selectedProducts, setSelectedProducts }) {
 
   return (
     <div className="Main">
+      <h2>Add Products</h2>
       {isPickerVisible ? (
         <ProductPicker 
         selectedProducts={selectedProducts}
@@ -43,16 +44,23 @@ function Main({ selectedProducts, setSelectedProducts }) {
           onAddProduct={handleAddProduct} 
           onClose={handleHidePicker} 
           onProductSelect={handleProductSelect} />
-      ) : (
+      ) : ""}
+      <div>
+        <div className='flex'>
+          <h2>Product</h2> 
+          <h2>Discount</h2>
+        </div>
+        <ProductList 
+          selectedProducts={selectedProducts} 
+          setSelectedProducts={setSelectedProducts} 
+          products={products} 
+          onRemove={handleRemoveProduct} 
+          onReorder={handleReorderProducts} 
+          onProductSelect={handleProductSelect} />
+      </div>
+      <div className='flex-btn'>
         <button onClick={handleShowPicker}>Add Product</button>
-      )}
-      <ProductList 
-        selectedProducts={selectedProducts} 
-        setSelectedProducts={setSelectedProducts} 
-        products={products} 
-        onRemove={handleRemoveProduct} 
-        onReorder={handleReorderProducts} 
-        onProductSelect={handleProductSelect} />
+      </div>
     </div>
   );
 }

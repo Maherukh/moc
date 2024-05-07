@@ -7,6 +7,7 @@ function ProductPicker({ onClose, onProductSelect, selectedProducts, setSelected
   const { data, loading, error } = useApi('https://stageapi.monkcommerce.app/task/products/search', { search: searchTerm, page: 1, limit: 10 });
 
   const handleVariantSelect = (variantId, isSelected, product) => {
+    // setSelectedProducts(selectedProducts.filter(product => product.id !== 6805249130));
     const selectedVariant = product.variants.find(variant => variant.id === variantId);
     if (isSelected) {
       setSelectedProducts(prevSelectedProducts => {
@@ -67,29 +68,47 @@ function ProductPicker({ onClose, onProductSelect, selectedProducts, setSelected
 
   return (
     <div className="ProductPicker">
-      <button onClick={onClose}>Close</button>
-      <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-      <h2 className="Product-header">Add Products</h2>
+      <div className="padding">
+      <div className="flex padding-1rem">
+        <h2 className="Product-header">Select Products</h2>
+        <span className="Delete-Btn" onClick={onClose}>X</span>
+      </div>
+      <hr className="line" />
+      <div className="search-bar padding-1rem">
+        <span className="Search">&#128270;</span>
+        <input className="Product-Search" placeholder="Search Product" type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+      </div>
+      <hr className="line" />
       {data && data.map(product => (
         <div key={product.id} className="Product">
-          <h2>{product.title}</h2>
-          <img className="Product-Image" src={product.image.src} alt={product.title} />
-          <p className="Product-Variants">Variants</p>
+          <div className="flex-start-prd">
+            <img className="Product-Image" src={product.image.src} alt={product.title} />
+            <p>{product.title}</p>
+          </div>
+          <hr className="line"/>
           {product.variants.map(variant => (
             <div key={variant.id} className="Product-variants">
-              <input
-              className="variant-checkbox"
-                type="checkbox"
-                id={variant.id}
-                onChange={(event) => handleVariantSelect(variant.id, event.target.checked, product)}
-                checked={isVariantSelected(variant.id)}
-              />
-              <label htmlFor={variant.id}>{variant.title}</label>
+              <div>
+                <input
+                  className="variant-checkbox"
+                  type="checkbox"
+                  id={variant.id}
+                  onChange={(event) => handleVariantSelect(variant.id, event.target.checked, product)}
+                  checked={isVariantSelected(variant.id)}
+                />
+                <label htmlFor={variant.id}>{variant.title}</label>
+              </div>
               <p className="Product-Price">Price: {variant.price}</p>
             </div>
           ))}
+          <hr className="line"/>
         </div>
       ))}
+      </div>
+      <div className="span-section">
+        <span className="cancel-btn" onClick={onClose}>Cancel</span>
+        <span className="add-btn" onClick={onClose}>Add</span>
+      </div>
     </div>
   );
 }
